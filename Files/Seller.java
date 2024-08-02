@@ -1,3 +1,5 @@
+package Files;
+
 public class Seller extends User {
     private String storeName;
     private String storeAddress;

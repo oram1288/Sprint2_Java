@@ -7,7 +7,11 @@ public class User {
     private String email;
     private String role;
 
-    int count = 1;
+    int upperBound = 10000;
+    int randomInt = (int) (Math.random() * upperBound);
+    
+
+    int count = randomInt;
 
     public User(int id, String username, String password, String email, String role){
         this.id = id;

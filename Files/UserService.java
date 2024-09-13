@@ -9,6 +9,8 @@ package Files;
 //import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 
 public class UserService{
     ArrayList<User> users = new ArrayList<>();
@@ -24,7 +26,6 @@ public class UserService{
             System.out.println("User Is Null");
         
         }
-        //String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
  
         User newUser = new User(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getRole());
         userDAO.createUser(newUser);
@@ -38,16 +39,11 @@ public class UserService{
         }
 
         User user = userDAO.findByUsername(username);
-
-        if(user == null){
-            System.out.println("The User Does Not Exist! ");
-            return false;
-        }
-
-        if(password.equals(user.getPassword())){
+        if (user != null) {
+            // Compare the plaintext password with the hashed password
             System.out.println("User has passed Auth");
-            return true;
-        }else{
+            return BCrypt.checkpw(password, user.getPassword());
+        } else {
             System.out.println("Wrong Password, Please Try Again!");
             return false;
         }

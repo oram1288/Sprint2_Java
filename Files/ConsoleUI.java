@@ -2,7 +2,7 @@ package Files;
 
 import java.util.Scanner;
 
-// import org.mindrot.jbcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
  
 public class ConsoleUI {
  
@@ -52,7 +52,6 @@ public class ConsoleUI {
         System.out.println("2. Register");
         System.out.println("3. Exit");
         System.out.print("Enter your choice: ");
-        //System.out.println(BCrypt.hashpw(kyle), BCrypt.gensalt());
     }
  
     private void login() {
@@ -86,10 +85,10 @@ public class ConsoleUI {
         String role= scanner.nextLine();
 
         // Hash the password using bcrypt
-        // String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
  
         // Create a new user using UserService
-        User newUser = new User(username, password, email, role);
+        User newUser = new User(username, hashedPassword, email, role);
         userService.registerUser(newUser);
  
         System.out.println("Registration successful!");

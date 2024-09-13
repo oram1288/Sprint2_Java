@@ -4,7 +4,7 @@ import java.sql.*; //Connection, DeviceManager, SQLException
  
 public class DatabaseConnection{
  
-    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String url = "jdbc:postgresql://localhost:5432/Sprint2Java";
     private static final String user = "postgres";
     private static final String password = "leafsfan12";
  

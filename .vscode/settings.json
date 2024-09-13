@@ -1,0 +1,7 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "Files/jBCrypt-0.4.1.jar",
+    "Files/postgresql-42.6.0.jar"
+  ]
+}
